@@ -1,14 +1,25 @@
+/* loop the game 5x, but only sends last result*/
+
+function game(){
+    let i;
+    for(i = 0; i < 5; i++){
+        playRound();}
+
+let userScore = 0;
+let computerScore = 0;
+let result = playRound();
+  
 /* Collect user choice from prompt and convert to lowercase */
 
-const userChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
+function playRound(){
 
+const userChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
 console.log(userChoice)
 
 /* Generate computer choice randomly*/
 
 let randomNumber = Math.floor(Math.random()*100) + 1;
-
-var computerChoice;
+let computerChoice;
 if (randomNumber <= 33) {
     computerChoice = 'rock'
 }
@@ -34,7 +45,15 @@ function compareChoice(choice1, choice2) {
         else {return 'Computer wins!'}};
 }
 
-/* Generate result and print to console */
+/* Generate result and **SEND IT OUT OF NESTED FUNCTION!!***/
 
-var result = compareChoice(userChoice, computerChoice);
+return compareChoice(userChoice, computerChoice);
+
+}
+
 console.log(result)
+
+}
+
+game ();
+
