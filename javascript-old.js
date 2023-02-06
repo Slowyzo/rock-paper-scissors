@@ -2,6 +2,25 @@
 let userScore = 0
 let computerScore = 0
 
+/* loop the playRound 5x and reports the winner of each round*/
+function game(){
+    let i;
+    for(i = 0; i < 3; i++){
+        let result = playRound()
+        console.log(result)
+/*keeps game score, plays for best out of 3 (not counting ties)*/
+    if (result === 'You win!'){userScore++}
+    else if (result === 'Computer wins!'){computerScore++}
+    else {i--};
+    }
+
+    reportWinner ()
+    /*reports the winner of the game*/
+        function reportWinner(){
+        if (userScore > computerScore) {console.log('You beat the computer!')}
+        else {console.log('The computer beat you!');}
+        }
+}
 
 /* Collect user choice from prompt and convert to lowercase */
 function playRound(){
@@ -38,11 +57,6 @@ console.log(userChoice)
 return compareChoice(userChoice, computerChoice);
 
 }
-
-const rockbtn = document.querySelector('#rockbtn');
-rockbtn.addEventListener("click", playRound(rock));
-
-
 
 game ()
 console.log(userScore)
