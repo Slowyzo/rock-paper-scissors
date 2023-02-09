@@ -1,23 +1,22 @@
 
 
 
-/*let container = document.querySelector('.container');
+let container = document.querySelector('.container');
 
 let rockbtn = document.querySelector('#rockbtn');
-rockbtn.addEventListener("click", () => {playRound('rock'); console.log('rock'); getScore();}); 
+rockbtn.addEventListener("click", () => rockPaperScissors('rock')); 
 
 let paperbtn = document.querySelector('#paperbtn');
-paperbtn.addEventListener("click", () => {playRound('paper'); console.log('paper'); getScore();}); 
+paperbtn.addEventListener("click", () => rockPaperScissors('paper')); 
 
 let scissorsbtn = document.querySelector('#scissorsbtn');
-scissorsbtn.addEventListener("click", () => {playRound('scissors'); console.log('scissors'); getScore();});   
-*/
+scissorsbtn.addEventListener("click", () => rockPaperScissors('scissors'));   
 
+let userScore = 0;
+let computerScore = 0;
 
 function rockPaperScissors(userChoice){
 
-    let userScore = 0;
-    let computerScore = 0;
     let computerChoice = getComputerChoice();
     let winner;
     
@@ -63,6 +62,4 @@ function rockPaperScissors(userChoice){
         console.log('User:' + userScore);
     
     }
-    
-    rockPaperScissors('rock');
     
