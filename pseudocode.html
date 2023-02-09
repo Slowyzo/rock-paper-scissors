@@ -1,38 +1,31 @@
-Loop the following 5x 
-{
-receive input (user choice)
-receive input regardless of capitalization
-if unexpected word give message 'wrong word'
-else, expected words - convert to integer?  
+
+User interface
+- 3 buttons for rock paper scissors
+    -custom shape? animation when clicked?
+- reset button and 'game' mode button
+- game mode: set number of rounds (?)
+- output text *round winner*, tie, game winner
+- winner theme/background
+- scoreboard > winner at 5 points
+
+buttons - eventlistener for click, calls playround with player selection*
+
+dom methods for scoreboard, output text, background
 
 
-generate computer choice
-one of 3 options selected randomly?
-or random 0-1 and sort based on size (ex: < 0.3 = rock)
 
 
-compare user choice with computer choice
-    if same, give tie message
-    else, if user choice > computer choice
-        give message 'you win'
-    if computer choice > user choice
-        give message 'computer wins'
+click r/p/s button > event listener
+run function playRound(r/p/s)
 
+playround(userChoice)
+-bring in userChoice
+-generate computerChoice
+-sub function() //compare choice, anonymous
+-logtext result 
+-adjust score
 
-excluding ties, there are six cases:
-user / computer
-r / p 
-r / s 
-p / r 
-p / s 
-s / p 
-s / r
+announce round winner
+update score on scoreboard
 
-send result outside the loop 
-}
-
-count result of each round
-
-compare results
-
-print winner to console
+game mode: loop, first to 5 points
