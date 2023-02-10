@@ -1,11 +1,11 @@
 
 User interface
 - 3 buttons for rock paper scissors
-    -custom shape? animation when clicked?
-- reset button and 'game' mode button
-- game mode: set number of rounds (?)
-- output text *round winner*, tie, game winner
-- winner theme/background
+//- custom shape? animation when clicked?
+- reset button (reset scoreboard) and 'game' mode button
+- game mode: set number of points
+- output text round winner, tie, game winner
+//- winner theme/background
 - scoreboard > winner at 5 points
 
 buttons - eventlistener for click, calls playround with player selection*
@@ -13,19 +13,18 @@ buttons - eventlistener for click, calls playround with player selection*
 dom methods for scoreboard, output text, background
 
 
-
-
 click r/p/s button > event listener
-run function playRound(r/p/s)
+run function rockPaperScissors
 
-playround(userChoice)
+rockPaperScissors(userChoice)
+*clear result text window
 -bring in userChoice
 -generate computerChoice
--sub function() //compare choice, anonymous
--logtext result 
+-sub function() //compare choice
+*logtext result in window
 -adjust score
 
-announce round winner
 update score on scoreboard
 
 game mode: loop, first to 5 points
+*display game winner in window
