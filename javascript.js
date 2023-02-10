@@ -14,12 +14,12 @@ rockbtn.style.backgroundColor = 'yellow';
 rockbtn.addEventListener("click", () => playRound('rock')); 
 
 let paperbtn = document.querySelector('#paperbtn');
-paperbtn.style.color = 'red';  
+paperbtn.style.color = 'red';
 paperbtn.addEventListener("click", () => playRound('paper')); 
 
 let scissorsbtn = document.querySelector('#scissorsbtn');
 scissorsbtn.setAttribute('style', 'color: blue; background: lightBlue;');
-scissorsbtn.addEventListener("click", () => playRound('scissors'));   
+scissorsbtn.addEventListener("click", () => playRound('scissors'));
 
 let resetbtn = document.querySelector('#reset');
 resetbtn.addEventListener("click", () => resetScore());
@@ -27,39 +27,47 @@ resetbtn.addEventListener("click", () => resetScore());
 let gamebtn = document.querySelector('#game');
 gamebtn.addEventListener("click", () => gameMode());
 
-let userScore = 0;
+
+let choiceArray = [rockbtn, paperbtn, scissorsbtn];
 let computerScore = 0;
+let userScore = 0;
 
 function resetScore(){
-    userScore = 0;
     computerScore = 0;
+    userScore = 0;
+
     box1.textContent = `Computer: ${computerScore}`;
     box2.textContent = `User: ${userScore}`;
     }
 
-/*function gameMode(){   
+function gameMode(){
     console.log('Game mode!');
     resetScore();
-    box1.addEventListener('change', () => scoreCheck());
-    box2.addEventListener('change', () => scoreCheck());
+    const scoreCheckEvent = scoreCheck;
+    choiceArray.forEach(btn => {
+        btn.addEventListener(
+            "click", scoreCheckEvent)
+        });
 
     function scoreCheck(){
             if (computerScore === 5){
                 alert('Computer beat you!');
-                endGame();} 
+                endGame(); return} 
             else if (userScore === 5){
                 alert('You won the game!'); 
-                endGame()}
-            else return ('nothing');
+                endGame(); return}
+            else return;
         }
 
     function endGame(){
-            box1.removeEventListener('change');
-            box2.removeEventListener('change');
             resetScore();
+            choiceArray.forEach(btn => {
+                btn.removeEventListener(
+                    "click", scoreCheckEvent)
+            });
+
         }
-    }   
-*/
+    }
 
 function playRound(userChoice){
 
@@ -67,9 +75,10 @@ function playRound(userChoice){
     let winner;
     
     function getComputerChoice () {
-            let randomNumber = Math.floor(Math.random()*100) + 1;
-                if (randomNumber <= 33){return 'rock'}
-                else if (randomNumber >= 67){return 'paper'}
+            const range = 100
+            let randomNumber = Math.floor(Math.random()*range) + 1;
+                if (randomNumber <= range/3){return 'rock'}
+                else if (randomNumber >= range * (2/3)){return 'paper'}
                 else {return 'scissors'}
         }
     
@@ -81,15 +90,15 @@ function playRound(userChoice){
             else if (userChoice === 'paper') 
                 {if (computerChoice === 'rock'){return winner = 'You win!'} 
                 else {return winner = 'Computer wins!'}}
-            else (userChoice === 'scissors') 
+            else if (userChoice === 'scissors') 
                 {if (computerChoice === 'paper'){return winner = 'You win!'} 
                 else {return winner = 'Computer wins!'}};
         }
     
     function getScore(winner) {
-            if (winner === 'Computer wins!'){computerScore++; 
+            if (winner === 'Computer wins!'){++computerScore; 
                 return computerScore;}
-            else if (winner === 'You win!'){userScore++;
+            else if (winner === 'You win!'){++userScore;
                 return userScore;}
             else return;
         }
@@ -102,6 +111,5 @@ function playRound(userChoice){
 
         box1.textContent = `Computer: ${computerScore}`;
         box2.textContent = `User: ${userScore}`;
-    
     }
     
