@@ -15,3 +15,6 @@ Part2
 Creating the multi-round loop was much more challenging, specifically,
 getting the result of one round out of the looping function so overall score
 could be tracked. Finally succeeded!
+
+Part3
+Created the user interface using CSS via DOM manipulation. Significantly reworked code. Changed multi-round mode to play until user or computer reaches 5 points, but can keep score outside of game mode with no limit!
