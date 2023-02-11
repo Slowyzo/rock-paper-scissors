@@ -2,23 +2,60 @@ let body = document.querySelector('body');
 body.style.display = 'flex';
 body.style.flex = '1, 1, auto';
 body.style.flexDirection = 'column';
+body.style.justifyContent = 'center';
+body.style.alignItems = 'center';
+body.style.padding = '20px';
+
+let heading = document.querySelector('h1');
+
+let container = document.querySelector('.container');
+container.style.border = '2px solid red';
+container.style.display = 'flex';
+container.style.padding = '20px';
+container.style.margin = '10 px';
+
+let textdisplay = document.querySelector('.textdisplay');
+textdisplay.style.border = '2px solid blue';
+textdisplay.style.display = 'flex';
+textdisplay.style.flexDirection = 'column';
+
+let computer = document.querySelector('#computer');
+
+let message = document.querySelector('#message');
+
+let scoreboard = document.querySelector('.scoreboard');
+scoreboard.style.border = '2px solid black';
+scoreboard.style.display = 'flex';
+scoreboard.style.flex = '1, 1, auto';
+scoreboard.style.flexDirection = 'column';
+scoreboard.style.padding = '20px';
+scoreboard.style.alignItems ='center';
+
+let container2 = document.querySelector('.container2');
+container2.style.border = '2px solid red';
+container2.style.display = 'flex';
+container2.style.padding = '20px';
 
 let box1 = document.querySelector('.window1');
-box1.style.border = '2px solid black';
 
 let box2 = document.querySelector('.window2');
-box2.style.border = '2px solid black';
 
 let rockbtn = document.querySelector('#rockbtn');
-rockbtn.style.backgroundColor = 'yellow';
+rockbtn.style.backgroundColor = 'tan';
+rockbtn.style.color = 'white';
+rockbtn.style.fontWeight = 'bold';
 rockbtn.addEventListener("click", () => playRound('rock')); 
 
 let paperbtn = document.querySelector('#paperbtn');
+paperbtn.style.backgroundColor = 'white';
 paperbtn.style.color = 'red';
+paperbtn.style.fontWeight = 'bold';
 paperbtn.addEventListener("click", () => playRound('paper')); 
 
 let scissorsbtn = document.querySelector('#scissorsbtn');
-scissorsbtn.setAttribute('style', 'color: blue; background: lightBlue;');
+scissorsbtn.style.backgroundColor = 'lightgrey';
+scissorsbtn.style.color = 'blue';
+scissorsbtn.style.fontWeight = 'bold';
 scissorsbtn.addEventListener("click", () => playRound('scissors'));
 
 let resetbtn = document.querySelector('#reset');
@@ -27,10 +64,10 @@ resetbtn.addEventListener("click", () => resetScore());
 let gamebtn = document.querySelector('#game');
 gamebtn.addEventListener("click", () => gameMode());
 
-
 let choiceArray = [rockbtn, paperbtn, scissorsbtn];
 let computerScore = 0;
 let userScore = 0;
+let winner;
 
 function resetScore(){
     computerScore = 0;
@@ -72,7 +109,6 @@ function gameMode(){
 function playRound(userChoice){
 
     let computerChoice = getComputerChoice();
-    let winner;
     
     function getComputerChoice () {
             const range = 100
@@ -102,14 +138,12 @@ function playRound(userChoice){
                 return userScore;}
             else return;
         }
-    
-        console.log(userChoice);
-        console.log(computerChoice);
-        compareChoice(userChoice, computerChoice)
-        console.log(winner);
-        getScore(winner);
 
+        compareChoice(userChoice, computerChoice);
+        getScore(winner);
+        computer.textContent = `Computer chose: ${computerChoice}!`;
         box1.textContent = `Computer: ${computerScore}`;
         box2.textContent = `User: ${userScore}`;
+        message.textContent = `${winner}`;
     }
     
