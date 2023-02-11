@@ -1,18 +1,22 @@
 let body = document.querySelector('body');
+body.style.minHeight = '100vh';
 body.style.display = 'flex';
 body.style.flex = '1, 1, auto';
 body.style.flexDirection = 'column';
-body.style.justifyContent = 'center';
 body.style.alignItems = 'center';
 body.style.padding = '20px';
 
 let heading = document.querySelector('h1');
 
 let container = document.querySelector('.container');
-container.style.border = '2px solid red';
 container.style.display = 'flex';
-container.style.padding = '20px';
-container.style.margin = '10 px';
+container.style.flex = '1, 0, auto'
+container.style.gap = '20px';
+
+let buttons = container.querySelectorAll('button');
+buttons.forEach((btn) => {
+    btn.style.borderRadius = '10px'
+})
 
 let textdisplay = document.querySelector('.textdisplay');
 textdisplay.style.border = '2px solid blue';
@@ -47,7 +51,7 @@ rockbtn.style.fontWeight = 'bold';
 rockbtn.addEventListener("click", () => playRound('rock')); 
 
 let paperbtn = document.querySelector('#paperbtn');
-paperbtn.style.backgroundColor = 'white';
+paperbtn.style.backgroundColor = 'darkgrey';
 paperbtn.style.color = 'red';
 paperbtn.style.fontWeight = 'bold';
 paperbtn.addEventListener("click", () => playRound('paper')); 
